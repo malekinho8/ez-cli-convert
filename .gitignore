@@ -1,3 +1,7 @@
 .pytest_cache/
 .vscode/
 __pycache__/
+ez_convert.egg-info/
+
+build/
+dist/
