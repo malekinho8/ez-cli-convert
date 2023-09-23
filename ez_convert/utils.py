@@ -1,4 +1,5 @@
 import subprocess
+from docx2pdf import convert
 from PIL import Image
 
 def make_output_filename(in_path, otype):
@@ -8,6 +9,11 @@ def convert_mov_to_mp4(mov_path):
     mp4_path = make_output_filename(mov_path, 'mp4')
     subprocess.run(['ffmpeg', '-i', mov_path, mp4_path])
     return mp4_path
+
+def doc_to_pdf(doc_path):
+    pdf_path = make_output_filename(doc_path, 'pdf')
+    convert(doc_path, pdf_path)
+    return pdf_path
 
 def jpg_to_pdf(input_path):
     # specify output path

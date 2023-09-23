@@ -23,7 +23,11 @@ def main(otype):
     if ext == 'mov': 
         out_path = convert_mov_to_mp4(in_path)
     elif ext == 'jpg':
-        out_path = jpg_to_pdf(in_path)
+        if otype == "pdf":
+            out_path = jpg_to_pdf(in_path)
+    elif ext == 'doc' or ext == 'docx':
+        if otype == "pdf":
+            out_path = doc_to_pdf(in_path)
     else:
         # raise a Not Implemented Error
         raise NotImplementedError(f"Conversion from {ext} to {otype} is not yet supported.")
