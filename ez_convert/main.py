@@ -25,6 +25,10 @@ def main(otype):
     elif ext == 'jpg':
         if otype == "pdf":
             out_path = jpg_to_pdf(in_path)
+        elif otype == "txt":
+            out_path = jpg_to_txt(in_path)
+        else:
+            raise NotImplementedError(f"Conversion from {ext} to {otype} is not yet supported.")
     elif ext == 'doc' or ext == 'docx':
         if otype == "pdf":
             out_path = doc_to_pdf(in_path)
