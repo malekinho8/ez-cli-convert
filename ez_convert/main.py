@@ -3,7 +3,7 @@ import os
 import subprocess
 import pyperclip
 import sys; sys.path.append('./')
-from utils import *
+from ez_convert.utils import *
 
 # add a command for the user defined output file type (--otype)
 @click.command()
