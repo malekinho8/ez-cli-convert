@@ -22,7 +22,7 @@ def main(otype):
 
     if ext == 'mov': 
         out_path = convert_mov_to_mp4(in_path)
-    elif ext == 'jpg':
+    elif ext.lower() == 'jpg' or ext.lower() == 'jpeg':
         if otype == "pdf":
             out_path = jpg_to_pdf(in_path)
         elif otype == "txt":
