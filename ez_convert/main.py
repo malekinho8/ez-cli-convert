@@ -32,6 +32,12 @@ def main(otype):
     elif ext == 'doc' or ext == 'docx':
         if otype == "pdf":
             out_path = doc_to_pdf(in_path)
+    elif ext == 'step':
+        if otype == "stl":
+            out_path = step_to_stl(in_path)
+    elif ext == 'heic' or ext == 'HEIC':
+        if otype == "jpg":
+            out_path = heic_to_jpg(in_path)
     else:
         # raise a Not Implemented Error
         raise NotImplementedError(f"Conversion from {ext} to {otype} is not yet supported.")

@@ -36,4 +36,21 @@ def jpg_to_txt(input_path):
         f.write(text)
     return output_path
 
-        
+def step_to_stl(input_path):
+    # specify the output path
+    output_path = make_output_filename(input_path, 'stl')
+    # open the step file
+
+    # convert the step to stl
+
+    return output_path
+
+def heic_to_jpg(input_path):
+    # specify the output path
+    output_path = make_output_filename(input_path, 'stl')
+
+    # open the image
+    img = Image.open(input_path)
+
+    img.save(output_path, 'jpg', resolution=100.0, quality=95)
+
