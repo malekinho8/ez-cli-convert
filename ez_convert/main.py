@@ -20,8 +20,9 @@ def main(otype):
     # Get file extension
     ext = in_path.rsplit('.', 1)[-1]
 
-    if ext == 'mov': 
-        out_path = convert_mov_to_mp4(in_path)
+    if ext == 'mov':
+        if otype == 'mp4':
+            out_path = convert_mov_to_mp4(in_path)
     elif ext.lower() == 'jpg' or ext.lower() == 'jpeg':
         if otype == "pdf":
             out_path = jpg_to_pdf(in_path)
