@@ -1,7 +1,9 @@
 import subprocess
 import pytesseract
+import cv2
 from docx2pdf import convert
 from PIL import Image
+from moviepy.editor import VideoFileClip
 
 def make_output_filename(in_path, otype):
     return in_path.rsplit('.', 1)[0] + '.' + otype
@@ -9,6 +11,34 @@ def make_output_filename(in_path, otype):
 def convert_mov_to_mp4(mov_path):
     mp4_path = make_output_filename(mov_path, 'mp4')
     subprocess.run(['ffmpeg', '-i', mov_path, mp4_path])
+    return mp4_path
+
+def convert_mov_to_gif(mov_path):
+    gif_path = make_output_filename(mov_path, 'gif')
+    # use some function to convert mov to gif
+    clip = VideoFileClip(mov_path, target_resolution=(360, 480))
+    clip.write_gif(gif_path, fps=10)
+    return gif_path
+
+def convert_mov_to_mp4_with_thumbnail(mov_path):
+    mp4_path = convert_mov_to_mp4(mov_path)
+    jpg_path = make_output_filename(mov_path, 'jpg')
+    # load the video
+    cap = cv2.VideoCapture(mp4_path)
+    # check if the video loaded successfully
+    if cap.isOpened():
+        # read the first frame
+        ret, frame = cap.read()
+        if ret:
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # convert the frame to a PIL Image
+            img = Image.fromarray(frame)
+            # save the image as a jpg
+            img.save(jpg_path)
+        else:
+            print('Unable to read frame from video.')
+    else:
+        print('Unable to open video.')
     return mp4_path
 
 def doc_to_pdf(doc_path):

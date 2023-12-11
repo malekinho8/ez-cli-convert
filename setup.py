@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ez-convert",
-    version="0.0.7",
+    version="0.0.8",
     author="Malek Ibrahim",
     author_email="shmeek8@gmail.com",
     description="A simple command line tool to convert files from one form to another.",
@@ -22,7 +22,7 @@ setup(
         'click',
         'pyperclip',
         'Pillow',
-
+        'moviepy'
     ],
     entry_points='''
         [console_scripts]
