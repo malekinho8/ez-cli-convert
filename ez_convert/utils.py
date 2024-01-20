@@ -3,7 +3,11 @@ import pytesseract
 import cv2
 from docx2pdf import convert
 from PIL import Image
+from pillow_heif import register_heif_opener
 from moviepy.editor import VideoFileClip
+
+# allow for the reading of HEIC images
+register_heif_opener()
 
 def make_output_filename(in_path, otype):
     return in_path.rsplit('.', 1)[0] + '.' + otype
@@ -77,10 +81,12 @@ def step_to_stl(input_path):
 
 def heic_to_jpg(input_path):
     # specify the output path
-    output_path = make_output_filename(input_path, 'stl')
+    output_path = make_output_filename(input_path, 'jpeg')
 
     # open the image
     img = Image.open(input_path)
 
-    img.save(output_path, 'jpg', resolution=100.0, quality=95)
+    img.save(output_path, 'jpeg', resolution=100.0, quality=95)
+
+    return output_path
 
