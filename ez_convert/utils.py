@@ -24,6 +24,13 @@ def convert_mov_to_gif(mov_path):
     clip.write_gif(gif_path, fps=10)
     return gif_path
 
+def convert_mp4_to_gif(mp4_path):
+    gif_path = make_output_filename(mp4_path, 'gif')
+    # use some function to convert mp4 to gif
+    clip = VideoFileClip(mp4_path, target_resolution=(360, 480))
+    clip.write_gif(gif_path, fps=10)
+    return gif_path
+
 def convert_mov_to_mp4_with_thumbnail(mov_path):
     mp4_path = convert_mov_to_mp4(mov_path)
     jpg_path = make_output_filename(mov_path, 'jpg')

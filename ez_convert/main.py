@@ -27,6 +27,9 @@ def main(otype):
             out_path = convert_mov_to_mp4_with_thumbnail(in_path)
         elif otype == 'gif':
             out_path = convert_mov_to_gif(in_path)
+    elif ext == 'mp4':
+        if otype == 'gif':
+            out_path = convert_mp4_to_gif(in_path)
     elif ext.lower() == 'jpg' or ext.lower() == 'jpeg':
         if otype == "pdf":
             out_path = jpg_to_pdf(in_path)
